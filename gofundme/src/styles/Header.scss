@@ -1,0 +1,77 @@
+$primary_nav_color: #333;
+// $primary_nav_font: "CircularXXWeb", Trebuchet, Helvetica, Arial, sans-serif;
+$primary_nav_font_size: 1rem;
+$primary_nav_bg_color: #f8f8f8;
+
+@font-face {
+  font-family: "myHeaderFont";
+  src: url(../fonts/CircularStd-Bold.woff) format("woff");
+}
+header {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  // flex-direction: column;
+  background-color: $primary_nav_bg_color;
+  align-items: center;
+  justify-content: space-around;
+  font-family: "myHeaderFont";
+  font-size: $primary_nav_font_size;
+  padding: 12px 5px;
+
+  .header-search {
+    display: flex;
+    gap: 15px;
+    justify-content: space-around;
+
+    .search-full {
+      display: flex;
+      justify-content: space-between;
+      :hover {
+        cursor: pointer;
+      }
+      .icon {
+        width: 15px;
+        height: 13px;
+        margin: 4px 7px;
+        :hover {
+          cursor: pointer;
+        }
+      }
+      .arrow-down {
+        width: 30px;
+        height: 14px;
+        margin-top: 5px;
+      }
+      .search-div {
+        display: block;
+      }
+    }
+  }
+
+  .header-nav {
+    display: block;
+
+    .padd-how {
+      padding-right: 10px;
+    }
+    .start-fund-button {
+      // width: 150px;
+      color: #02a95c;
+      font-size: 15px;
+      background-color: #fff;
+      border: 1px solid #02a95c;
+      border-radius: 20px;
+      padding: 10px 15px;
+      font-weight: bold;
+      letter-spacing: 0.02em;
+    }
+  }
+  .header-logo {
+    display: block;
+    position: relative;
+    .logo {
+      width: 7rem;
+    }
+  }
+}

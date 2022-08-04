@@ -6,7 +6,7 @@ import child from "../images/child.jpeg";
 const ImageDesc = () => {
   return (
     <div className="container">
-      <div className="flex-container">
+      <div className="flex-container container-div">
         <div className="flex-desc">
           <div className="place-you">
             <h2>A place for you</h2>

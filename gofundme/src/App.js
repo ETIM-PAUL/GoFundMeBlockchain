@@ -3,12 +3,14 @@ import "./App.scss";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HeaderNav from "./components/HeaderNav";
 import ImageDesc from "./components/ImageDesc";
+import Steps from "./components/Steps";
 
 function App() {
   return (
     <div className="App">
       <HeaderNav />
       <ImageDesc />
+      <Steps />
       {/* <Router>
         <Routes>
           <Route path="/about"></Route>

@@ -17,8 +17,8 @@ const HeaderNav = () => {
   };
 
   return (
-    <div>
-      <header>
+    <header>
+      <nav>
         <div className="header-search">
           <div className="search-full">
             <BsSearch className="icon" />
@@ -41,11 +41,11 @@ const HeaderNav = () => {
           <span className="padd-how">How it works</span>
           <span className="padd-how">Sign In</span>
           <span className="padd-how">
-            <button className="start-fund-button">Start a GoFundMe</button>
+            <button className="start-fund-button">Connect Wallet</button>
           </span>
         </div>
-      </header>
-    </div>
+      </nav>
+    </header>
   );
 };
 

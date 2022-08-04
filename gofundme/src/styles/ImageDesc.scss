@@ -1,0 +1,106 @@
+@mixin devices($breakpoint) {
+  //the name of the mixin is devices
+
+  @if $breakpoint == tablet {
+    @media only screen and (max-width: 767px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == mobile {
+    @media only screen and (max-width: 481px) {
+      @content;
+    }
+  }
+}
+
+.container {
+  width: 100%;
+  background-color: #f8f8f8;
+  .flex-container {
+    justify-content: space-between;
+    display: flex;
+    margin: auto;
+    width: 78%;
+    padding: 4rem 0;
+    // column-gap: 50px;
+    .flex-desc {
+      // background-color: rgba(255, 255, 255, 0.8);`
+      // border: 1px solid rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      font-size: 30px;
+      text-align: start;
+      display: block;
+      line-height: 2em;
+      @include devices(tablet) {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+      }
+      .place-you {
+        width: 310px;
+        .green-line {
+          height: 5px;
+          width: 100px;
+          background-color: #02a95c;
+          @include devices(tablet) {
+            margin-left: 3.5rem;
+            margin-bottom: 1rem;
+          }
+        }
+        .start-fund-button {
+          // width: 150px;
+          background-color: #02a95c;
+          color: #fff;
+          font-size: 18px;
+          border: 1px solid #02a95c;
+          border-radius: 30px;
+          padding: 10px 15px;
+          font-weight: bold;
+          letter-spacing: 0.02em;
+          display: flex;
+          gap: 3px;
+          margin-top: 3rem;
+          &:hover {
+            cursor: pointer;
+          }
+          .go-icon {
+            width: 30px;
+            // margin-top: 10px;
+          }
+          .start-btn {
+            margin-top: 5px;
+          }
+          @include devices(tablet) {
+            margin-left: 3rem;
+          }
+        }
+      }
+    }
+    .flex-image {
+      display: flex;
+      padding: 2px;
+      justify-content: end;
+      .hero-img {
+        right: 10.5rem;
+        position: absolute;
+        border-radius: 30px;
+        object-fit: cover;
+        width: 44%;
+        height: 480px;
+        @include devices(tablet) {
+          object-fit: cover;
+          height: 300px;
+          margin: auto;
+          position: relative;
+          right: 0;
+          width: 100%;
+        }
+      }
+    }
+    @include devices(tablet) {
+      display: block;
+      width: 95%;
+    }
+  }
+}

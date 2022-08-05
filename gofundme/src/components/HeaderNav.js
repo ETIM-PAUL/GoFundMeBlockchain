@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-import logo from "../logo.jpeg";
+import logo from "../logo.png";
 import "../styles/Header.scss";
 import { BsSearch } from "react-icons/bs";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";

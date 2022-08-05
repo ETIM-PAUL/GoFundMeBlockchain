@@ -6,6 +6,11 @@
 @mixin devices($breakpoint) {
   //the name of the mixin is devices
 
+  @if $breakpoint == desktop {
+    @media only screen and (max-width: 1189px) {
+      @content;
+    }
+  }
   @if $breakpoint == tablet {
     @media only screen and (max-width: 767px) {
       @content;
@@ -63,6 +68,9 @@
 .container-div {
   width: 78%;
   margin: auto;
+  @include devices(desktop) {
+    width: 90%;
+  }
   @include devices(tablet) {
     width: 95%;
   }

@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HeaderNav from "./components/HeaderNav";
 import ImageDesc from "./components/ImageDesc";
 import Steps from "./components/Steps";
+import Price from "./components/Price";
+import Featured from "./components/Featured";
 
 function App() {
   return (
@@ -11,6 +13,8 @@ function App() {
       <HeaderNav />
       <ImageDesc />
       <Steps />
+      <Price />
+      <Featured />
       {/* <Router>
         <Routes>
           <Route path="/about"></Route>

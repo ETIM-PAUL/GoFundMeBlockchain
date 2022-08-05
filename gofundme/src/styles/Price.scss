@@ -1,0 +1,45 @@
+section {
+  text-align: start;
+  margin: auto;
+  .pricing-container {
+    text-align: start;
+    p:nth-child(1) {
+      color: #767676;
+    }
+    .simple {
+      font-size: 60px;
+      margin: 10px 0px;
+      // font-family: Helvetica, sans-serif;
+    }
+    .powerful {
+      font-size: 40px;
+      margin-top: 0px;
+      font-family: Helvetica, sans-serif;
+      font-size: 3.5rem;
+      font-style: normal;
+      font-weight: 400;
+      color: #02a95c;
+      line-height: 1.18;
+    }
+  }
+  button {
+    background-color: #fff;
+    border: none;
+    color: #333;
+    display: inline-flex;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.1;
+    padding: 0.75rem 1rem 0.75rem 0;
+    gap: 5px;
+    transition: all ease 0.5s;
+
+    &:hover {
+      border-radius: 10px;
+      // border: none solid #eee;
+      background-color: #eee;
+      cursor: pointer;
+      padding: 0.75rem 1rem 0.75rem;
+    }
+  }
+}

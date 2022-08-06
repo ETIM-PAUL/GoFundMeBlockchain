@@ -7,7 +7,7 @@
     }
   }
   @if $breakpoint == hideMobile {
-    @media only screen and (min-width: 481px) {
+    @media only screen and (min-width: 767px) {
       @content;
     }
   }
@@ -25,7 +25,7 @@
   .steps-inner {
     padding-top: 10rem;
     @include devices(tablet) {
-      padding-top: 1px;
+      padding-top: 1rem;
     }
     .steps-expect-fund {
       width: 70%;
@@ -36,19 +36,22 @@
       .steps-fund {
         text-align: left;
         font-size: 40px;
-        display: inline-flex;
+        display: block;
+        width: 500px;
+        min-width: 350px;
         @include devices(tablet) {
-          width: 450px;
+          width: 400px;
         }
         @include devices(mobile) {
-          width: 390px;
-          padding-right: 10px;
+          width: 300px;
+          min-width: 250px;
+          // padding-right: 10px;
         }
       }
     }
     .steps-ridge-outer {
       width: 100%;
-      margin: 4rem 0;
+      margin-top: 4rem;
       overflow-x: auto;
       overflow-y: visible;
       // overflow-y: hidden;
@@ -127,7 +130,7 @@
           }
         }
       }
-      @include devices(mobile) {
+      @include devices(tablet) {
         display: none;
       }
     }
@@ -210,6 +213,6 @@
     }
   }
   @include devices(tablet) {
-    background-color: #f8f8f8;
+    background-color: #fff;
   }
 }

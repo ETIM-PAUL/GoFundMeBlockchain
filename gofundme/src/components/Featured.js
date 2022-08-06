@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/Featured.scss";
-import greenMap from "../images/greenMap.png";
+import greenMap from "../images/warhero.png";
 import { MdArrowForwardIos } from "react-icons/md";
 
 const Featured = () => {
@@ -8,7 +8,7 @@ const Featured = () => {
     return (
       <div className="otherFeaturedPosts-outer">
         <div className="otherFeaturedPosts-inner">
-          <div className="other-featured-image">
+          <div className="other-featured-image" data-image-src={props.dataImg}>
             <span className="other-urgent">Urgent Cause</span>
           </div>
           <div className="details">
@@ -26,18 +26,19 @@ const Featured = () => {
       <div className="container-div">
         <p>Where you can help</p>
         <p>Featured Charities</p>
-        <div className="grid-display x mandatory-scroll-snapping" dir="ltr">
+        <div className="grid-display ">
           <div className="first">
             <div className="first-flex">
-              <div className="featured-image">
-                <img alt="" src={greenMap} />
+              <span className="urgent">Urgent Cause</span>
+              <div className="featured-image" data-image-src="feat">
+                {/* <img alt="" src={greenMap} height={200} /> */}
               </div>
               <div className="first-details-outer">
                 <div className=" first-details-inner">
                   <h2>How to help: Donate EPE tokens to flood victims</h2>
                   <p>
                     Donate to verified fundraisers to help the individuals and
-                    families affected by widespread flooding across Nigeria
+                    families affected by widespread flooding across the world
                   </p>
                   <button className="btn">
                     Help Now <MdArrowForwardIos />
@@ -45,19 +46,21 @@ const Featured = () => {
                 </div>
               </div>
             </div>
-            <span className="urgent">Urgent Cause</span>
           </div>
           <OtherFeaturedPosts
             detailsText="Oak fire relief: How you can help"
             btn="Help now"
+            dataImg="one"
           />
           <OtherFeaturedPosts
-            detailsText="Celebrating Black Joy"
+            detailsText="Helping Orphans all over the globe"
             btn="Dive in!"
+            dataImg="two"
           />
           <OtherFeaturedPosts
             detailsText="How one man is preserving hundreds of WWII stories"
             btn="Read more"
+            dataImg="three"
           />
         </div>
       </div>

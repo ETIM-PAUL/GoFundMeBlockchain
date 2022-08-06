@@ -1,11 +1,13 @@
 import logo from "./logo.svg";
-import "./App.scss";
+import "./styles/App.scss";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HeaderNav from "./components/HeaderNav";
 import ImageDesc from "./components/ImageDesc";
 import Steps from "./components/Steps";
 import Price from "./components/Price";
 import Featured from "./components/Featured";
+import Footer from "./components/Footer";
+// import "antd/dist/antd.css";
 
 function App() {
   return (
@@ -13,8 +15,9 @@ function App() {
       <HeaderNav />
       <ImageDesc />
       <Steps />
-      <Price />
       <Featured />
+      <Price />
+      <Footer />
       {/* <Router>
         <Routes>
           <Route path="/about"></Route>

@@ -1,4 +1,34 @@
-section {
+@mixin devices($breakpoint) {
+  //the name of the mixin is devices
+
+  @if $breakpoint == desktop {
+    @media only screen and (max-width: 1189px) {
+      @content;
+    }
+  }
+  @if $breakpoint == tablet {
+    @media only screen and (max-width: 767px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == mobile {
+    @media only screen and (max-width: 481px) {
+      @content;
+    }
+  }
+}
+.price-layout {
+  background-color: #ffffff;
+  position: relative;
+  display: block;
+  margin-top: 4rem;
+  @include devices(tablet) {
+    background-color: #fff;
+    margin-top: -3rem;
+  }
+}
+.price-container {
   text-align: start;
   margin: auto;
   .pricing-container {

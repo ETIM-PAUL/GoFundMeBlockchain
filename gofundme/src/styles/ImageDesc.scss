@@ -1,22 +1,11 @@
-@mixin devices($breakpoint) {
-  //the name of the mixin is devices
-
-  @if $breakpoint == tablet {
-    @media only screen and (max-width: 767px) {
-      @content;
-    }
-  }
-
-  @if $breakpoint == mobile {
-    @media only screen and (max-width: 481px) {
-      @content;
-    }
-  }
-}
+@use "App";
 
 .container {
+  overflow: hidden;
+
   width: 100%;
   background-color: #f8f8f8;
+  padding-top: 3rem;
   .flex-container {
     justify-content: space-between;
     display: flex;
@@ -26,25 +15,29 @@
     .flex-desc {
       // background-color: rgba(255, 255, 255, 0.8);`
       // border: 1px solid rgba(0, 0, 0, 0.8);
-      padding: 20px;
+      padding: 20px 0px;
       font-size: 30px;
       text-align: start;
       display: block;
       line-height: 2em;
-      @include devices(tablet) {
-        display: flex;
+      width: 50%;
+      margin: auto;
+      @include App.devices(tablet) {
+        display: block;
         justify-content: center;
         text-align: center;
+        width: 100%;
       }
       .place-you {
         width: 310px;
+        margin: auto;
+        display: contents;
         .green-line {
           height: 5px;
           width: 100px;
           background-color: #02a95c;
-          @include devices(tablet) {
-            margin-left: 3.5rem;
-            margin-bottom: 1rem;
+          @include App.devices(tablet) {
+            margin: -2rem auto 2rem;
           }
         }
         .start-fund-button {
@@ -70,24 +63,23 @@
           .start-btn {
             margin-top: 5px;
           }
-          @include devices(tablet) {
-            margin-left: 3rem;
+          @include App.devices(tablet) {
+            display: inline-flex;
           }
         }
       }
     }
     .flex-image {
       display: flex;
-      padding: 2px;
       justify-content: end;
+      width: 50%;
       .hero-img {
-        right: 10.5rem;
         position: absolute;
         border-radius: 30px;
         object-fit: cover;
         width: 44%;
         height: 480px;
-        @include devices(tablet) {
+        @include App.devices(tablet) {
           object-fit: cover;
           height: 300px;
           margin: auto;
@@ -96,10 +88,24 @@
           width: 100%;
         }
       }
+      @include App.devices(tablet) {
+        width: 100%;
+      }
     }
-    @include devices(tablet) {
+    @include App.devices(tablet) {
       display: block;
       padding: 0px;
     }
   }
+  @include App.devices(tablet) {
+    background-color: #fff;
+  }
+}
+
+.slogan-flexes {
+  display: block;
+  margin-top: -3rem;
+}
+.slogan-flex {
+  display: inline-grid;
 }

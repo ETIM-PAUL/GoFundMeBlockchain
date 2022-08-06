@@ -1,11 +1,21 @@
 @font-face {
   font-family: "myHeaderFont";
-  src: url(./fonts/CircularStd-Bold.woff) format("woff");
+  src: url(../fonts/CircularStd-Bold.woff) format("woff");
 }
 
 @mixin devices($breakpoint) {
   //the name of the mixin is devices
 
+  @if $breakpoint == tabmob {
+    @media only screen and (max-width: 959px) {
+      @content;
+    }
+  }
+  @if $breakpoint == mobtap {
+    @media only screen and (min-width: 959px) {
+      @content;
+    }
+  }
   @if $breakpoint == desktop {
     @media only screen and (max-width: 1189px) {
       @content;
@@ -27,6 +37,8 @@
 .App {
   text-align: center;
   font-family: "MyHeaderFont";
+  overflow: hidden;
+
   // margin: auto;
 }
 
@@ -66,12 +78,26 @@
 }
 
 .container-div {
-  width: 78%;
+  width: 78% !important;
   margin: auto;
   @include devices(desktop) {
-    width: 90%;
+    margin: auto;
+    width: 90% !important;
   }
   @include devices(tablet) {
-    width: 95%;
+    margin: auto;
+    width: 95% !important;
   }
+}
+
+.footer {
+  height: 30px;
+  color: #02a95c;
+  padding: 10px;
+  background-color: #f8f8f8;
+  height: 30px;
+  color: #02a95c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

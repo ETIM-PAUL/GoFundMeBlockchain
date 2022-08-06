@@ -1,21 +1,26 @@
+@use "App";
 $primary_nav_color: #333;
 // $primary_nav_font: "CircularXXWeb", Trebuchet, Helvetica, Arial, sans-serif;
 $primary_nav_font_size: 1rem;
 $primary_nav_bg_color: #f8f8f8;
+$primary_btn_padding: 0.5rem;
 
-header {
+.desktop-header {
   background-color: $primary_nav_bg_color;
+  width: 100%;
+  z-index: 2;
+  position: fixed;
+  overflow: hidden;
 
-  nav {
-    // position: fixed;
-    width: 78%;
+  .desktop-view {
     display: flex;
-    // flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     font-size: $primary_nav_font_size;
     padding: 12px 0px;
     margin: auto;
+    overflow: hidden;
 
     .header-search {
       display: flex;
@@ -28,6 +33,9 @@ header {
         &:hover {
           cursor: pointer;
         }
+        @include App.devices(mobtab) {
+          display: none;
+        }
         .icon {
           width: 15px;
           height: 13px;
@@ -35,6 +43,8 @@ header {
           :hover {
             cursor: pointer;
           }
+          // @include devices() {
+          // }
         }
         .arrow-down {
           width: 30px;
@@ -72,6 +82,7 @@ header {
         }
       }
     }
+
     .header-logo {
       display: block;
       position: relative;
@@ -79,5 +90,137 @@ header {
         width: 7rem;
       }
     }
+    @include App.devices(tabmob) {
+      display: none;
+    }
+  }
+
+  .tablet-view {
+    overflow: hidden;
+
+    display: flex;
+    // flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    font-size: $primary_nav_font_size;
+    padding: 12px 0px;
+    margin: auto;
+    @include App.devices(mobtap) {
+      display: none;
+    }
+  }
+  .icon-tablet {
+    width: 25px;
+    height: 20px;
+    padding: 10px;
+    &:hover {
+      cursor: pointer;
+      background-color: #eee;
+      border-radius: 50%;
+    }
+    // @include devices() {
+    // }
+  }
+
+  .header-nav-menu {
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    &:hover {
+      cursor: pointer;
+      background-color: #eee;
+      border-radius: 50%;
+    }
+  }
+}
+
+//hide navigation
+.hidden {
+  display: none;
+}
+.show {
+  display: block;
+}
+
+//DropDown Mobile Menu
+
+.tablet-mobile-header {
+  z-index: 10;
+  background-color: #fff;
+  width: 100%;
+  position: fixed;
+  padding-top: 15px;
+  display: none;
+}
+
+.logo {
+  display: block;
+  width: 7rem;
+}
+ul {
+  list-style: none;
+  display: inline;
+  text-align: start;
+  margin: 0 !important;
+  li {
+    padding: 15px 10px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.hover-grey {
+  &:hover {
+    background-color: #f8f8f8;
+  }
+}
+.mobile {
+  display: inline-flex !important;
+}
+.cancel-icon {
+  float: right;
+  margin-right: 1px;
+  width: 20px;
+  height: 30px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.mobile-buttons-container {
+  display: inline-grid;
+}
+.mobile-connect-wallet-button {
+  padding: $primary_btn_padding;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  height: 3rem;
+  font-weight: 900;
+  width: 22.5rem;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.bg-green {
+  background-color: #02a95c;
+  border: 1px solid #02a95c;
+  color: #fff;
+  &:hover {
+    background-color: #0b8c51;
+  }
+}
+
+.bg-white {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+  &:hover {
+    background-color: #f8f8f8;
   }
 }

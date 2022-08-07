@@ -60,9 +60,11 @@ const Steps = () => {
                   <span className="steps-count-mobile"></span>
                   <div className="steps-desc-mobile">
                     <p className="steps-header-mobile">Start with the basic.</p>
-                    <p className="steps-text-mobile">
-                      Kick things off with connecting your wallet.
-                    </p>
+                    <div>
+                      <p className="steps-text-mobile">
+                        Kick things off with connecting your wallet.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>

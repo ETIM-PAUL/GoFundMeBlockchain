@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import "../styles/ImageDesc.scss";
 import crown from "../images/goFundMeCrown.png";
 import child from "../images/child.jpeg";
@@ -8,8 +8,26 @@ import { ReactComponent as ThirdHR } from "../images/GreenHr/third-green.svg";
 import { ReactComponent as LastHR } from "../images/GreenHr/last-green.svg";
 
 const ImageDesc = () => {
+  const wrapper = useRef(null);
+  let wrap = wrapper;
+  // wrap.addClass("fix-search");
+  useEffect(() => {
+    let t = document.querySelector("#expanded-connect");
+    console.log(t);
+    t.addEventListener("scroll", (event) => {
+      let h = t.scrollTop;
+      console.log(h);
+      console.log("h");
+      // if (this.scrollTop > 147) {
+      //   wrapper.current.classList.toggle("fix-search");
+      // } else {
+      //   wrapper.current.classList.toggle("fix-search");
+      // }
+    });
+  }, []);
+
   return (
-    <div className="container">
+    <div className="container" id="expanded-connect">
       <div className="flex-container container-div">
         <div className="flex-desc">
           <div className="place-you">
@@ -21,7 +39,7 @@ const ImageDesc = () => {
                 </span>
                 <FirstHR className="slideGreenLine" />
               </div>
-              <div className="slogan-flex">
+              {/* <div className="slogan-flex">
                 <span
                   className="js-scroller-text color-gray-dark"
                   data-testid="header-for-charities"
@@ -47,9 +65,9 @@ const ImageDesc = () => {
                   you&nbsp;
                 </span>
                 <LastHR className="slideGreenLine" />
-              </div>
+              </div> */}
             </div>
-            <button className="start-fund-button slideGreenLine">
+            <button className="start-fund-button slideGreenLine" ref={wrapper}>
               <img src={crown} alt="" className="go-icon" />
               <span className="start-btn ">Connect Wallet</span>
             </button>

@@ -177,7 +177,7 @@ $primary_card_color: #f8f8f8;
         }
       }
       @include App.devices(tablet) {
-        display: inline-flex;
+        display: flex;
         justify-content: space-between;
         flex: none;
 
@@ -221,5 +221,8 @@ $primary_card_color: #f8f8f8;
     // min-height: 1.625rem;
     padding: 0.35rem 0.35rem;
     margin: 15px;
+  }
+  @include App.devices(tablet) {
+    margin: -3rem 0;
   }
 }

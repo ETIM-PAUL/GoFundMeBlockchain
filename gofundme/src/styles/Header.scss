@@ -31,6 +31,7 @@ $primary_btn_padding: 0.5rem;
         justify-content: space-between;
         &:hover {
           cursor: pointer;
+          background-color: #f8f8f8;
         }
         @include App.devices(mobtab) {
           display: none;

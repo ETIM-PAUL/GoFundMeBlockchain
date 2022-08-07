@@ -1,30 +1,11 @@
-@mixin devices($breakpoint) {
-  //the name of the mixin is devices
-
-  @if $breakpoint == tablet {
-    @media only screen and (max-width: 767px) {
-      @content;
-    }
-  }
-  @if $breakpoint == hideMobile {
-    @media only screen and (min-width: 767px) {
-      @content;
-    }
-  }
-
-  @if $breakpoint == mobile {
-    @media only screen and (max-width: 481px) {
-      @content;
-    }
-  }
-}
+@use "App";
 
 .steps-container {
   width: 100%;
   margin: auto;
   .steps-inner {
     padding-top: 10rem;
-    @include devices(tablet) {
+    @include App.devices(tablet) {
       padding-top: 1rem;
     }
     .steps-expect-fund {
@@ -39,10 +20,10 @@
         display: block;
         width: 500px;
         min-width: 350px;
-        @include devices(tablet) {
+        @include App.devices(tablet) {
           width: 400px;
         }
-        @include devices(mobile) {
+        @include App.devices(mobile) {
           width: 300px;
           min-width: 250px;
           // padding-right: 10px;
@@ -51,7 +32,7 @@
     }
     .steps-ridge-outer {
       width: 100%;
-      margin-top: 4rem;
+      padding-top: 4rem;
       overflow-x: auto;
       overflow-y: visible;
       // overflow-y: hidden;
@@ -64,7 +45,7 @@
       // overflow: auto;
       .steps-ridge-inner {
         display: flex;
-        justify-content: space-between;
+        justify-content: start;
         width: 1000px;
         counter-reset: step;
         .step {
@@ -130,7 +111,7 @@
           }
         }
       }
-      @include devices(tablet) {
+      @include App.devices(tablet) {
         display: none;
       }
     }
@@ -207,12 +188,12 @@
           margin-top: -15px;
         }
       }
-      @include devices(hideMobile) {
+      @include App.devices(tabletMin) {
         display: none;
       }
     }
   }
-  @include devices(tablet) {
+  @include App.devices(tablet) {
     background-color: #fff;
   }
 }

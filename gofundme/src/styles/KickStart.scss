@@ -1,3 +1,5 @@
+@use "App";
+
 .kickstart-outer {
   background-color: #f8f8f8;
   text-align: start;
@@ -7,38 +9,69 @@
 }
 
 .kickstart-inner {
-  margin: 10px 10px;
+  margin: 10px 0 10px 10px;
   display: flex;
   min-height: 26.625rem;
+  @include App.devices(tabmob) {
+    display: flex;
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    margin: 0;
+  }
 }
 
 .kickstart-text-btn {
-  -webkit-flex: 1 1;
-  -ms-flex: 1 1;
-  flex: 1 1;
+  -webkit-flex: 3 1;
+  -ms-flex: 3 1;
+  flex: 3 1;
   padding-left: 2.5rem;
   display: block;
   align-self: center;
   justify-self: center;
+  max-width: 600px;
+  @include App.devices(tabmob) {
+    max-width: 90%;
+    padding-left: 0;
+  }
 }
 
 .kickstart-side-image {
-  width: 40%;
-  object-fit: cover;
-  background-image: url("../images/child.jpeg");
+  // width: 40%;
+  // flex: 2;
+  object-fit: contain;
+  // background-position: 50%;
+  // background-image: url("../images/greenMap.png");
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   margin-left: 1rem;
+  .flower-image {
+    height: 400px;
+  }
+  @include App.devices(tabmob) {
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+    .flower-image {
+      height: 250px;
+    }
+  }
 }
 .big-title {
   font-size: 2.5rem;
   line-height: 1.1;
   margin: 0 0 2rem;
+  @include App.devices(tabmob) {
+    text-align: center;
+  }
 }
 
 .btn-contain {
   display: flex;
   gap: 20px;
+  @include App.devices(tabmob) {
+    display: block;
+  }
 }
 .start-fund-btn {
   font-size: 18px;
@@ -53,5 +86,32 @@
   justify-content: center;
   &:hover {
     cursor: pointer;
+  }
+}
+
+.tablet-btn-full {
+  @include App.devices(tabmob) {
+    width: 100%;
+  }
+}
+
+.tablet-btn-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tablet-btn {
+  @include App.devices(tabmob) {
+    margin-top: 1rem;
+    border: none;
+    background-color: #f8f8f8;
+    font-size: 14px;
+  }
+}
+
+.tablet-btn-icon {
+  display: none;
+  @include App.devices(tabmob) {
+    display: block;
   }
 }

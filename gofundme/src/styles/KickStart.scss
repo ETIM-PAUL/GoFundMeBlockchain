@@ -1,0 +1,57 @@
+.kickstart-outer {
+  background-color: #f8f8f8;
+  text-align: start;
+  font-weight: 900;
+  margin: 4rem auto;
+  border-radius: 20px;
+}
+
+.kickstart-inner {
+  margin: 10px 10px;
+  display: flex;
+  min-height: 26.625rem;
+}
+
+.kickstart-text-btn {
+  -webkit-flex: 1 1;
+  -ms-flex: 1 1;
+  flex: 1 1;
+  padding-left: 2.5rem;
+  display: block;
+  align-self: center;
+  justify-self: center;
+}
+
+.kickstart-side-image {
+  width: 40%;
+  object-fit: cover;
+  background-image: url("../images/child.jpeg");
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  margin-left: 1rem;
+}
+.big-title {
+  font-size: 2.5rem;
+  line-height: 1.1;
+  margin: 0 0 2rem;
+}
+
+.btn-contain {
+  display: flex;
+  gap: 20px;
+}
+.start-fund-btn {
+  font-size: 18px;
+  border-radius: 30px;
+  padding: 15px 15px;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+  display: flex;
+  gap: 3px;
+  margin-top: 3rem;
+  width: 200px;
+  justify-content: center;
+  &:hover {
+    cursor: pointer;
+  }
+}

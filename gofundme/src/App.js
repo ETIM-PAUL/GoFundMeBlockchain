@@ -7,6 +7,7 @@ import Steps from "./components/Steps";
 import Price from "./components/Price";
 import Featured from "./components/Featured";
 import Footer from "./components/Footer";
+import KickStart from "./components/KickStart";
 // import "antd/dist/antd.css";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Steps />
       <Featured />
       <Price />
+      <KickStart />
       <Footer />
       {/* <Router>
         <Routes>

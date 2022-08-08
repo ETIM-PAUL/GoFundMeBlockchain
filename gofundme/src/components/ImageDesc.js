@@ -7,16 +7,16 @@ import { ReactComponent as SecondHR } from "../images/GreenHr/second-green.svg";
 import { ReactComponent as ThirdHR } from "../images/GreenHr/third-green.svg";
 import { ReactComponent as LastHR } from "../images/GreenHr/last-green.svg";
 
-const ImageDesc = () => {
+const ImageDesc = ({ ...props }) => {
   const wrapper = useRef(null);
   let wrap = wrapper;
   // wrap.addClass("fix-search");
   useEffect(() => {
     let t = document.querySelector("#expanded-connect");
-    console.log(t);
+    // console.log(t);
     t.addEventListener("scroll", (event) => {
       let h = t.scrollTop;
-      console.log(h);
+      // console.log(h);
       console.log("h");
       // if (this.scrollTop > 147) {
       //   wrapper.current.classList.toggle("fix-search");
@@ -69,7 +69,9 @@ const ImageDesc = () => {
             </div>
             <button className="start-fund-button slideGreenLine" ref={wrapper}>
               <img src={crown} alt="" className="go-icon" />
-              <span className="start-btn ">Connect Wallet</span>
+              <span className="start-btn " onClick={props.connectWallet}>
+                {props.account === null ? "Connect Wallet" : "Wallet Connected"}
+              </span>
             </button>
           </div>
         </div>

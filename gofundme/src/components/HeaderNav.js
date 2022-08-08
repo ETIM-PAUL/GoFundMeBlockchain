@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import logo from "../logo.png";
+import { Link } from "react-router-dom";
 import "../styles/Header.scss";
 import { BsSearch } from "react-icons/bs";
 import { FcMenu } from "react-icons/fc";
@@ -28,7 +29,7 @@ const DropdownItem = ({ ...props }) => {
   );
 };
 
-const HeaderNav = () => {
+const HeaderNav = ({ ...props }) => {
   const [showDropDownMenu, setShowDropDownMenu] = useState(true);
   const [arrow, setArrow] = useState(true);
   const [headerNav, setHeaderNav] = useState(true);
@@ -67,9 +68,32 @@ const HeaderNav = () => {
             <div className="header-nav">
               <span className="padd-how">How it works</span>
               <span className="padd-how">Sign In</span>
-              <span className="padd-how">
-                <button className="start-fund-button">Connect Wallet</button>
-              </span>
+              {props.account === null && props.isWalletInstalled && (
+                <span className="padd-how">
+                  <button
+                    className="start-fund-button"
+                    onClick={props.connectWallet}
+                  >
+                    Connect Wallet
+                  </button>
+                </span>
+              )}
+              {props.account === null && props.isWalletInstalled === false && (
+                <span className="padd-how">
+                  <a href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn">
+                    <button className="start-fund-button">
+                      Install Metamask wallet
+                    </button>
+                  </a>
+                </span>
+              )}
+              {props.account !== null && (
+                <span className="padd-how">
+                  <button className="start-fund-button">
+                    Wallet Connected
+                  </button>
+                </span>
+              )}
             </div>
           </nav>
 
@@ -115,7 +139,9 @@ const HeaderNav = () => {
               </ul>
               <div className="mobile-buttons-container">
                 <button className="mobile-connect-wallet-button bg-green">
-                  Connect your wallet
+                  {props.account === null
+                    ? "Connect your wallet"
+                    : "Wallet Connected"}
                 </button>
                 <button className="mobile-connect-wallet-button bg-white">
                   Sign in

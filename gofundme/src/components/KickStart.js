@@ -3,7 +3,7 @@ import flower from "../images/footer-flower.png";
 import "../styles/KickStart.scss";
 import { MdArrowForwardIos } from "react-icons/md";
 
-const KickStart = () => {
+const KickStart = ({ ...props }) => {
   return (
     <div className="kickstart-outer container-div">
       <div className="kickstart-inner ">
@@ -12,8 +12,11 @@ const KickStart = () => {
             Ready to get started? Join thousands of other donors today
           </h2>
           <div className="btn-contain">
-            <button className="start-fund-btn bg-green tablet-btn-full">
-              Connect Wallet
+            <button
+              className="start-fund-btn bg-green tablet-btn-full"
+              onClick={props.connectWallet}
+            >
+              {props.account === null ? "Connect Wallet" : "Wallet Connected"}
             </button>
             <div className="tablet-btn-div">
               <button className="start-fund-btn bg-white tablet-btn">

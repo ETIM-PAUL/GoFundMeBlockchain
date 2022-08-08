@@ -1,6 +1,5 @@
-import logo from "./logo.svg";
+import React, { useState, useEffect } from "react";
 import "./styles/App.scss";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HeaderNav from "./components/HeaderNav";
 import ImageDesc from "./components/ImageDesc";
 import Steps from "./components/Steps";
@@ -8,43 +7,55 @@ import Price from "./components/Price";
 import Featured from "./components/Featured";
 import Footer from "./components/Footer";
 import KickStart from "./components/KickStart";
-// import "antd/dist/antd.css";
-import React, { useRef, useEffect } from "react";
+import { Contract, providers } from "ethers";
 
 function App() {
-  // useEffect(() => {
-  //   let t = document.getElementById("expanded-connect");
-  //   console.log(t);
-  //   //   window.onscroll = function () {
-  //   //     show.innerHTML = document.documentElement.scrollTop || document.body.scrollTop;
-  //   // };
-  //   document.addEventListener("scroll", (event) => {
-  //     let h = t.scrollTop;
-  //     console.log(t.documentElement.scrollLeft);
-  //     // console.log("h");
-  //     // if (this.scrollTop > 147) {
-  //     //   wrapper.current.classList.toggle("fix-search");
-  //     // } else {
-  //     //   wrapper.current.classList.toggle("fix-search");
-  //     // }
-  //   });
-  // }, []);
+  const [isWalletInstalled, setIsWalletInstalled] = useState(false);
+  // state for keeping track of current connected account.
+
+  const [account, setAccount] = useState(null);
+
+  useEffect(() => {
+    if (window.ethereum) {
+      setIsWalletInstalled(true);
+    }
+  }, []);
+
+  //function to connect wallet
+  async function connectWallet() {
+    window.ethereum
+      .request({
+        method: "eth_requestAccounts",
+      })
+      .then((accounts) => {
+        setAccount(accounts[0]);
+      })
+      .catch((error) => {
+        alert("Something went wrong");
+      });
+  }
+
   return (
     <div className="App" id="expanded-connect">
-      <HeaderNav />
-      <ImageDesc />
+      <HeaderNav
+        account={account}
+        isWalletInstalled={isWalletInstalled}
+        connectWallet={connectWallet}
+      />
+      <ImageDesc
+        account={account}
+        isWalletInstalled={isWalletInstalled}
+        connectWallet={connectWallet}
+      />
       <Steps />
       <Featured />
       <Price />
-      <KickStart />
+      <KickStart
+        account={account}
+        isWalletInstalled={isWalletInstalled}
+        connectWallet={connectWallet}
+      />
       <Footer />
-      {/* <Router>
-        <Routes>
-          <Route path="/about"></Route>
-          <Route path="/users"></Route>
-          <Route path="/"></Route>
-        </Routes>
-      </Router> */}
     </div>
   );
 }

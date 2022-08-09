@@ -1,5 +1,5 @@
-import React, { useRef, useState } from "react";
-import logo from "../logo.png";
+import React, { useRef, useState, useEffect } from "react";
+import logo from "../assets/logo/logo.png";
 import { Link } from "react-router-dom";
 import "../styles/Header.scss";
 import { BsSearch } from "react-icons/bs";
@@ -42,10 +42,29 @@ const HeaderNav = ({ ...props }) => {
     setDropDown(!dropdown);
   };
 
+  useEffect(() => {
+    // function that adds styling to the header navigation section
+
+    const headerNavi = document.getElementById("headerNavi");
+    const btnD = document.getElementsByClassName("scroll-btn-color");
+    document.addEventListener("scroll", function () {
+      if (window.scrollY > 40) headerNavi.classList.add("change-to-white");
+      else headerNavi.classList.remove("change-to-white");
+      for (let index = 0; index < btnD.length; index++) {
+        const element = btnD[index];
+        console.log(element);
+
+        if (window.scrollY > 240) element.classList.add("change-to-green");
+        else element.classList.remove("change-to-green");
+      }
+    });
+  }, []);
+
   return (
     <>
+      {/* Desktop and portrait navigation header */}
       {headerNav && (
-        <header className="desktop-header">
+        <header className="desktop-header" id="headerNavi">
           <nav className="desktop-view container-div">
             <div className="header-search">
               <div className="search-full">
@@ -71,7 +90,7 @@ const HeaderNav = ({ ...props }) => {
               {props.account === null && props.isWalletInstalled && (
                 <span className="padd-how">
                   <button
-                    className="start-fund-button"
+                    className="start-fund-button scroll-btn-color"
                     onClick={props.connectWallet}
                   >
                     Connect Wallet
@@ -81,15 +100,15 @@ const HeaderNav = ({ ...props }) => {
               {props.account === null && props.isWalletInstalled === false && (
                 <span className="padd-how">
                   <a href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn">
-                    <button className="start-fund-button">
-                      Install Metamask wallet
+                    <button className="start-fund-button scroll-btn-color">
+                      Install Metamask
                     </button>
                   </a>
                 </span>
               )}
               {props.account !== null && (
                 <span className="padd-how">
-                  <button className="start-fund-button">
+                  <button className="start-fund-button scroll-btn-color">
                     Wallet Connected
                   </button>
                 </span>
@@ -97,16 +116,16 @@ const HeaderNav = ({ ...props }) => {
             </div>
           </nav>
 
+          {/* Mobile and tablet header navigation */}
           <nav className="tablet-view container-div navigation-header">
-            {/* <div className="search-icon"> */}
             <BsSearch className="icon-tablet" />
-            {/* </div> */}
             <img src={logo} alt="fundmeLogo" className="logo" />
             <FcMenu className="header-nav-menu" onClick={() => toggleNav()} />
           </nav>
         </header>
       )}
 
+      {/* Dropdown menu for mobile and tablet view */}
       {dropdown && (
         <header className="tablet-mobile-header dropdown">
           <nav className="container-div">
@@ -138,7 +157,7 @@ const HeaderNav = ({ ...props }) => {
                 />
               </ul>
               <div className="mobile-buttons-container">
-                <button className="mobile-connect-wallet-button bg-green">
+                <button className="mobile-connect-wallet-button bg-green scroll-btn-color">
                   {props.account === null
                     ? "Connect your wallet"
                     : "Wallet Connected"}

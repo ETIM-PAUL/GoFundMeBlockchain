@@ -25,6 +25,11 @@ $primary_card_color: #f8f8f8;
       column-gap: 20px;
       overflow-x: scroll;
       overflow-y: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      ::-webkit-scrollbar {
+        scrollbar-width: none;
+      }
       .featured-container {
         ::-webkit-scrollbar {
           width: 0;
@@ -44,7 +49,7 @@ $primary_card_color: #f8f8f8;
           display: flex;
           position: relative;
           .featured-image[data-image-src="feat"] {
-            background-image: url("../images/flood-victims.jpeg");
+            background-image: url("../assets/images/flood-victims.jpeg");
             border-top-left-radius: $primary_card_border_radius;
             border-bottom-left-radius: $primary_card_border_radius;
             @include App.devices(tablet) {
@@ -67,11 +72,21 @@ $primary_card_color: #f8f8f8;
             display: flex;
             justify-content: center;
             .first-details-inner {
-              padding: 2.5rem 2.5rem 2rem;
+              padding: 2.5rem 2.5rem 2.5rem;
               @include App.devices(tablet) {
                 padding: 10px 20px !important;
               }
               p {
+                text-align: start;
+                display: block;
+                color: black;
+                font-size: 30px;
+                @include App.devices(tablet) {
+                  font-size: 17px;
+                  color: #767676;
+                }
+              }
+              .hide-text-mobile {
                 font-size: 17px;
                 color: #767676;
                 text-align: start;
@@ -90,8 +105,11 @@ $primary_card_color: #f8f8f8;
                 padding: 0.75rem 1rem 0.75rem 0;
                 gap: 5px;
                 transition: all ease 0.3s;
-                margin-top: 7rem;
+                margin-top: 4rem;
               }
+            }
+            @include App.devices(mobile) {
+              width: 100%;
             }
           }
           @include App.devices(tablet) {
@@ -140,17 +158,17 @@ $primary_card_color: #f8f8f8;
         flex: 0 0 100%;
         .otherFeaturedPosts-inner {
           .other-featured-image[data-image-src="one"] {
-            background-image: url("../images/fireVictims.jpeg");
+            background-image: url("../assets/images/fireVictims.jpeg");
             border-top-left-radius: $primary_card_border_radius;
             border-top-right-radius: $primary_card_border_radius;
           }
           .other-featured-image[data-image-src="two"] {
-            background-image: url("../images/orphans.jpeg");
+            background-image: url("../assets/images/orphans.jpeg");
             border-top-left-radius: $primary_card_border_radius;
             border-top-right-radius: $primary_card_border_radius;
           }
           .other-featured-image[data-image-src="three"] {
-            background-image: url("../images/warhero.png");
+            background-image: url("../assets/images/warhero.png");
             border-top-left-radius: $primary_card_border_radius;
             border-top-right-radius: $primary_card_border_radius;
           }
@@ -223,6 +241,6 @@ $primary_card_color: #f8f8f8;
     margin: 15px;
   }
   @include App.devices(tablet) {
-    margin: -3rem 0;
+    margin: -2rem 0;
   }
 }

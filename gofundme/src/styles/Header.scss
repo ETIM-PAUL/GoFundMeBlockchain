@@ -1,8 +1,17 @@
 @use "App";
 $primary_nav_color: #333;
-$primary_nav_font_size: 1rem;
+$primary_nav_font_size: 16px;
 $primary_nav_bg_color: #f8f8f8;
 $primary_btn_padding: 0.5rem;
+
+.change-to-white {
+  background-color: #fff !important;
+  box-shadow: 0 0.375rem 0.875rem rgb(0 0 0 / 10%);
+}
+.change-to-green {
+  background-color: #02a95c !important;
+  color: #fff !important;
+}
 
 .desktop-header {
   background-color: $primary_nav_bg_color;
@@ -47,7 +56,7 @@ $primary_btn_padding: 0.5rem;
         .arrow-down {
           width: 30px;
           height: 14px;
-          margin-top: 5px;
+          margin-top: 0.3rem;
         }
         .search-div {
           display: block;
@@ -141,6 +150,7 @@ $primary_btn_padding: 0.5rem;
   width: 100%;
   position: fixed;
   padding-top: 15px;
+  height: -webkit-fill-available;
 }
 
 .logo {

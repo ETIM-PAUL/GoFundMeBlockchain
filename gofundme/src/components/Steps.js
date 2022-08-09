@@ -1,10 +1,14 @@
 import React from "react";
 import "../styles/Steps.scss";
-import ridge from "../images/ridge.svg";
-import secondRidge from "../images/second-ridge.svg";
-import finalRidge from "../images/final-step.svg";
+import ridge from "../assets/dotted-steps/ridge.svg";
+import secondRidge from "../assets/dotted-steps/second-ridge.svg";
+import finalRidge from "../assets/dotted-steps/final-step.svg";
+import mobile from "../assets/dotted-steps/mobile-ridge.svg";
+import secondMobile from "../assets/dotted-steps/secondMobileLine.svg";
 const Steps = () => {
   return (
+    // View for devices above 967px
+
     <div className="steps-container">
       <div className="container-div">
         <div className="steps-inner">
@@ -57,7 +61,13 @@ const Steps = () => {
             <div className="steps-ridge-inner-mobile">
               <div className="step-mobile">
                 <div className="steps-ridge-mobile">
-                  <span className="steps-count-mobile"></span>
+                  <span className="steps-count-mobile">
+                    <img
+                      src={mobile}
+                      className="mob-ridge transform-right"
+                      alt=""
+                    />
+                  </span>
                   <div className="steps-desc-mobile">
                     <p className="steps-header-mobile">Start with the basic.</p>
                     <div>
@@ -70,12 +80,13 @@ const Steps = () => {
               </div>
               <div className="step-mobile">
                 <div className="steps-ridge-mobile">
-                  <span className="steps-count-mobile"></span>
-                  {/* <img
-                    src={secondRidge}
-                    className="second-ridge-mobile "
-                    alt=""
-                  /> */}
+                  <span className="steps-count-mobile">
+                    <img
+                      src={secondMobile}
+                      className="mob-ridge transform-left"
+                      alt=""
+                    />
+                  </span>
                   <div className="steps-desc-mobile second-desc">
                     <p className="steps-header-mobile">Select organization.</p>
                     <p className="steps-text-mobile">
@@ -87,11 +98,6 @@ const Steps = () => {
               <div className="step-mobile">
                 <div className="steps-ridge-mobile">
                   <span className="steps-count-mobile"></span>
-                  {/* <img
-                    src={finalRidge}
-                    className="final-step-ridge-mobile"
-                    alt=""
-                  /> */}
                   <div className="steps-desc-mobile">
                     <p className="steps-header-mobile">Donate Tokens</p>
                     <p className="steps-text-mobile">

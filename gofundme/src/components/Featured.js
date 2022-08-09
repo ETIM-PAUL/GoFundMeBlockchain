@@ -1,6 +1,5 @@
 import React from "react";
 import "../styles/Featured.scss";
-import greenMap from "../images/warhero.png";
 import { MdArrowForwardIos } from "react-icons/md";
 
 const Featured = () => {
@@ -21,6 +20,7 @@ const Featured = () => {
       </div>
     );
   };
+
   return (
     <div className="featured-container">
       <div className="container-div">
@@ -30,13 +30,11 @@ const Featured = () => {
           <div className="first">
             <div className="first-flex">
               <span className="urgent">Urgent Cause</span>
-              <div className="featured-image" data-image-src="feat">
-                {/* <img alt="" src={greenMap} height={200} /> */}
-              </div>
+              <div className="featured-image" data-image-src="feat"></div>
               <div className="first-details-outer">
                 <div className=" first-details-inner">
-                  <h2>How to help: Donate EPE tokens to flood victims</h2>
-                  <p>
+                  <p>How to help: Donate EPE tokens to flood victims</p>
+                  <p className="hide-text-mobile">
                     Donate to verified fundraisers to help the individuals and
                     families affected by widespread flooding across the world
                   </p>
@@ -47,6 +45,7 @@ const Featured = () => {
               </div>
             </div>
           </div>
+
           <OtherFeaturedPosts
             detailsText="Oak fire relief: How you can help"
             btn="Help now"

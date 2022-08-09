@@ -18,21 +18,24 @@ function App() {
   useEffect(() => {
     if (window.ethereum) {
       setIsWalletInstalled(true);
-    }
+    } else alert("Please install metamask");
   }, []);
 
   //function to connect wallet
+
   async function connectWallet() {
-    window.ethereum
-      .request({
-        method: "eth_requestAccounts",
-      })
-      .then((accounts) => {
-        setAccount(accounts[0]);
-      })
-      .catch((error) => {
-        alert("Something went wrong");
-      });
+    setTimeout(() => {
+      window.ethereum
+        .request({
+          method: "eth_requestAccounts",
+        })
+        .then((accounts) => {
+          setAccount(accounts[0]);
+        })
+        .catch((error) => {
+          alert("Something went wrong");
+        });
+    }, 1500);
   }
 
   return (

@@ -126,7 +126,7 @@
         text-align: start;
         .steps-ridge-mobile {
           display: flex;
-          padding-bottom: 70px;
+          padding-bottom: 40px;
           .ridge-mobile {
             padding: 0px 10px;
             margin-top: -3rem;
@@ -171,7 +171,7 @@
 
         .steps-desc-mobile {
           line-height: 0.7rem;
-          margin: -15px 15px;
+          margin: -10px 15px;
           .steps-header-mobile {
             font-size: 20px;
           }
@@ -180,7 +180,7 @@
             font-weight: 500;
             font-size: 15px;
             width: 250px;
-            line-height: 1rem;
+            line-height: 1.3rem;
             font-family: Helvetica, sans-serif;
           }
         }
@@ -196,4 +196,23 @@
   @include App.devices(tablet) {
     background-color: #fff;
   }
+}
+
+.mob-ridge {
+  overflow: hidden;
+  height: 67px;
+  position: absolute;
+  width: 160px;
+}
+
+.transform-right {
+  margin-left: 4px;
+  margin-top: 15px;
+  transform: rotate(110deg);
+}
+
+.transform-left {
+  margin-top: 23px;
+  margin-left: -37px;
+  transform: rotate(75deg);
 }

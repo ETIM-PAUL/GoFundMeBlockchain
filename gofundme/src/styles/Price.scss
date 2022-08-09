@@ -23,10 +23,6 @@
   position: relative;
   display: block;
   margin-top: 4rem;
-  @include devices(tablet) {
-    background-color: #fff;
-    margin-top: 5rem;
-  }
 }
 .price-container {
   text-align: start;

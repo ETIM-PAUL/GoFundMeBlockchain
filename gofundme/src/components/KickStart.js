@@ -1,5 +1,5 @@
 import React from "react";
-import flower from "../images/footer-flower.png";
+import flower from "../assets/images/footer-flower.png";
 import "../styles/KickStart.scss";
 import { MdArrowForwardIos } from "react-icons/md";
 
@@ -27,7 +27,11 @@ const KickStart = ({ ...props }) => {
           </div>
         </div>
         <div className="kickstart-side-image">
-          <img src={flower} className="flower-image" />
+          <img
+            src={flower}
+            className="flower-image"
+            alt="flower-holding-hand"
+          />
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "../styles/Header.scss";
 import { BsSearch } from "react-icons/bs";
 import { FcMenu } from "react-icons/fc";
+import { VscLoading } from "react-icons/vsc";
 import { FaTimes } from "react-icons/fa";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
@@ -52,7 +53,6 @@ const HeaderNav = ({ ...props }) => {
       else headerNavi.classList.remove("change-to-white");
       for (let index = 0; index < btnD.length; index++) {
         const element = btnD[index];
-        console.log(element);
 
         if (window.scrollY > 240) element.classList.add("change-to-green");
         else element.classList.remove("change-to-green");
@@ -93,7 +93,10 @@ const HeaderNav = ({ ...props }) => {
                     className="start-fund-button scroll-btn-color"
                     onClick={props.connectWallet}
                   >
-                    Connect Wallet
+                    <div className="flex-loader">
+                      {props.loading && <div className="loader"></div>}
+                      {props.loading ? "Connecting Wallet" : "Connect Wallet"}
+                    </div>
                   </button>
                 </span>
               )}

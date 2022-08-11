@@ -227,157 +227,25 @@ ul {
   }
 }
 
-//Green HR Line Slide In
-.slideGreenLine {
-  animation: slide-in-fwd-left;
-  animation-duration: 0.5s;
+.flex-loader {
+  display: flex;
+  gap: 2px;
 }
 
-.slide-in-fwd-left {
-  -webkit-animation: slide-in-fwd-left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-    both;
-  animation: slide-in-fwd-left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+.loader {
+  border: 5px solid #f3f3f3; /* Light grey */
+  border-top: 5px solid green; /* Blue */
+  border-radius: 50%;
+  width: 5px;
+  height: 5px;
+  animation: spin 2s linear infinite;
 }
 
-@-webkit-keyframes slide-in-fwd-left {
+@keyframes spin {
   0% {
-    -webkit-transform: translateZ(-1400px) translateX(-50px);
-    transform: translateZ(-1400px) translateX(-50px);
-    opacity: 0;
+    transform: rotate(0deg);
   }
   100% {
-    -webkit-transform: translateZ(0) translateX(0);
-    transform: translateZ(0) translateX(0);
-    opacity: 1;
-  }
-}
-@keyframes slide-in-fwd-left {
-  0% {
-    -webkit-transform: translateZ(-1400px) translateX(-50px);
-    transform: translateZ(-1400px) translateX(-50px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateZ(0) translateX(0);
-    transform: translateZ(0) translateX(0);
-    opacity: 1;
-  }
-}
-
-//bounce-btn
-.bounce-entrance {
-  animation: bounce-left;
-  animation-duration: 0.5s;
-}
-
-.bounce-left {
-  -webkit-animation: bounce-left 0.8s both;
-  animation: bounce-left 0.8s both;
-}
-
-@-webkit-keyframes bounce-left {
-  0% {
-    -webkit-transform: translateX(-48px);
-    transform: translateX(-48px);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-    opacity: 1;
-  }
-  24% {
-    opacity: 1;
-  }
-  40% {
-    -webkit-transform: translateX(-26px);
-    transform: translateX(-26px);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-  }
-  65% {
-    -webkit-transform: translateX(-13px);
-    transform: translateX(-13px);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-  }
-  82% {
-    -webkit-transform: translateX(-6.5px);
-    transform: translateX(-6.5px);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-  }
-  93% {
-    -webkit-transform: translateX(-4px);
-    transform: translateX(-4px);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-  }
-  25%,
-  55%,
-  75%,
-  87%,
-  98% {
-    -webkit-transform: translateX(0px);
-    transform: translateX(0px);
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
-  }
-  100% {
-    -webkit-transform: translateX(0px);
-    transform: translateX(0px);
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
-    opacity: 1;
-  }
-}
-@keyframes bounce-left {
-  0% {
-    -webkit-transform: translateX(-48px);
-    transform: translateX(-48px);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-    opacity: 1;
-  }
-  24% {
-    opacity: 1;
-  }
-  40% {
-    -webkit-transform: translateX(-26px);
-    transform: translateX(-26px);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-  }
-  65% {
-    -webkit-transform: translateX(-13px);
-    transform: translateX(-13px);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-  }
-  82% {
-    -webkit-transform: translateX(-6.5px);
-    transform: translateX(-6.5px);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-  }
-  93% {
-    -webkit-transform: translateX(-4px);
-    transform: translateX(-4px);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-  }
-  25%,
-  55%,
-  75%,
-  87%,
-  98% {
-    -webkit-transform: translateX(0px);
-    transform: translateX(0px);
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
-  }
-  100% {
-    -webkit-transform: translateX(0px);
-    transform: translateX(0px);
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
-    opacity: 1;
+    transform: rotate(360deg);
   }
 }

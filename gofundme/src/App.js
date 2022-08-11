@@ -11,6 +11,7 @@ import { Contract, providers } from "ethers";
 
 function App() {
   const [isWalletInstalled, setIsWalletInstalled] = useState(false);
+  const [loading, setLoading] = useState(false);
   // state for keeping track of current connected account.
 
   const [account, setAccount] = useState(null);
@@ -24,6 +25,7 @@ function App() {
   //function to connect wallet
 
   async function connectWallet() {
+    setLoading(true);
     setTimeout(() => {
       window.ethereum
         .request({
@@ -31,11 +33,13 @@ function App() {
         })
         .then((accounts) => {
           setAccount(accounts[0]);
+          console.log(accounts[0]);
         })
         .catch((error) => {
           alert("Something went wrong");
         });
-    }, 1500);
+      setLoading(false);
+    }, 2000);
   }
 
   return (
@@ -44,6 +48,7 @@ function App() {
         account={account}
         isWalletInstalled={isWalletInstalled}
         connectWallet={connectWallet}
+        loading={loading}
       />
       <ImageDesc
         account={account}

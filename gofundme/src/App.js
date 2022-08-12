@@ -33,7 +33,6 @@ function App() {
         })
         .then((accounts) => {
           setAccount(accounts[0]);
-          console.log(accounts[0]);
         })
         .catch((error) => {
           alert("Something went wrong");
@@ -56,7 +55,7 @@ function App() {
         connectWallet={connectWallet}
       />
       <Steps />
-      <Featured />
+      <Featured account={account} />
       <Price />
       <KickStart
         account={account}

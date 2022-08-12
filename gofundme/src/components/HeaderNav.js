@@ -111,8 +111,8 @@ const HeaderNav = ({ ...props }) => {
               )}
               {props.account !== null && (
                 <span className="padd-how">
-                  <button className="start-fund-button scroll-btn-color">
-                    Wallet Connected
+                  <button className="start-fund-button scroll-btn-color truncate">
+                    {props.account}
                   </button>
                 </span>
               )}
@@ -160,10 +160,13 @@ const HeaderNav = ({ ...props }) => {
                 />
               </ul>
               <div className="mobile-buttons-container">
-                <button className="mobile-connect-wallet-button bg-green scroll-btn-color">
+                <button
+                  className="mobile-connect-wallet-button bg-green scroll-btn-color"
+                  onClick={props.connectWallet}
+                >
                   {props.account === null
                     ? "Connect your wallet"
-                    : "Wallet Connected"}
+                    : props.account}
                 </button>
                 <button className="mobile-connect-wallet-button bg-white">
                   Sign in

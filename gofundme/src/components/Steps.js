@@ -15,7 +15,7 @@ const Steps = () => {
           <div className="steps-expect-fund">
             <p className="steps-expect">What to expect</p>
             <span className="steps-fund">
-              Fundraising on GoFundMe takes just a few minutes
+              Donating ETH on GoFundMe takes just a few minutes
             </span>
           </div>
           <div className="steps-ridge-outer">
@@ -49,7 +49,7 @@ const Steps = () => {
                 </div>
                 <div className="steps-desc">
                   <p className="steps-header">Donate Tokens</p>
-                  <p className="steps-text">Donate any amount of Tokens</p>
+                  <p className="steps-text">Donate any amount of ETH Tokens</p>
                 </div>
               </div>
             </div>
@@ -101,7 +101,7 @@ const Steps = () => {
                   <div className="steps-desc-mobile">
                     <p className="steps-header-mobile">Donate Tokens</p>
                     <p className="steps-text-mobile">
-                      Donate any amount of Tokens
+                      Donate any amount of ETH Tokens
                     </p>
                   </div>
                 </div>

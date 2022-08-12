@@ -1,0 +1,84 @@
+$border_radius: 10px;
+
+.modal {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 3; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #f8f8f8;
+  margin: 10% auto; /* 15% from the top and centered */
+  padding: 20px;
+  display: block;
+  border-radius: $border_radius;
+  width: 70%; /* Could be more or less, depending on screen size */
+}
+
+.cancel-balance {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  justify-content: space-between;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 5px;
+  &:hover,
+  &:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+.form-input {
+  margin: 10px auto;
+  display: inline-grid;
+  row-gap: 10px;
+}
+label {
+  text-align: start;
+}
+input {
+  width: 260px;
+  height: 35px;
+  padding: 5px;
+  margin: auto;
+  border: none;
+  border-radius: $border_radius;
+}
+
+.activatedButton {
+  color: white;
+  background-color: #02a95c;
+  border-radius: $border_radius;
+  padding: 0.75rem;
+  border: none;
+  &:hover {
+    cursor: pointer;
+    background-color: #02b57d;
+  }
+}
+
+.disableButton {
+  color: white;
+  background-color: #02a95c;
+  border-radius: $border_radius;
+  padding: 0.75rem;
+  border: none;
+  opacity: 0.2;
+}

@@ -13,6 +13,13 @@ $primary_btn_padding: 0.5rem;
   color: #fff !important;
 }
 
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 130px;
+}
+
 .desktop-header {
   background-color: $primary_nav_bg_color;
   width: 100%;
@@ -203,7 +210,7 @@ ul {
   font-size: 15px;
   height: 3rem;
   font-weight: 900;
-  width: 22.5rem;
+  width: 20.5rem;
   &:hover {
     cursor: pointer;
   }

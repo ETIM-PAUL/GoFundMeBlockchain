@@ -20,10 +20,10 @@ async function printDonors(donors) {
   for (const donor of donors) {
     const payer = donor.donorName;
     const donorAddress = donor.donorAddress;
-    const ethDonated = donor.amount;
+    const ethDonated = hardHat.ethers.utils.formatEther(donor.amount);
     const charity = donor.charity;
     console.log(
-      `${payer} with wallet address (${donorAddress}) donated: "${ethDonated}"ETH to "${charity}`
+      `${payer} with wallet address (${donorAddress}) donated: ${ethDonated}ETH to "${charity}`
     );
   }
 }

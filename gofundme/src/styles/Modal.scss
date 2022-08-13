@@ -90,3 +90,17 @@ input {
   text-align: start;
   width: 200px;
 }
+
+.btn-loader {
+  display: inline-flex;
+  gap: 5px;
+}
+
+.loader {
+  border: 5px solid #f3f3f3; /* Light grey */
+  border-top: 5px solid green; /* Blue */
+  border-radius: 50%;
+  width: 5px;
+  height: 5px;
+  animation: spin 2s linear infinite;
+}

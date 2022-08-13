@@ -1,6 +1,11 @@
 import axios from "axios";
-import { providers, utils } from "ethers";
+import { Contract, providers, utils } from "ethers";
 import * as Yup from "yup";
+import abi from "../utils/DonateEth.json";
+
+const contractAddress = "0x871F283Cf322F0206FE6424EE01529E186270eb5";
+const contractABI = abi.abi;
+const provider = new providers.Web3Provider(window.ethereum);
 
 const getEthCurrentPrice = async () => {
   let ethPrice = new Promise(async (resolve, reject) => {
@@ -49,10 +54,9 @@ export const convertEthToUsdt = async (eth) => {
 export const getBalance = async (address) => {
   if (address !== null) {
     let walletBalance = 0;
-    const provider = new providers.Web3Provider(window.ethereum);
     const balance = await provider.getBalance(address);
     const balanceInEth = utils.formatEther(balance);
-    walletBalance = balanceInEth;
+    walletBalance = Number(balanceInEth).toFixed(4);
     return walletBalance;
   } else return "Please Connect Your Wallet";
 };
@@ -77,3 +81,35 @@ export const yupValidation = (balance) =>
           )
       ),
   });
+
+export const donateEth = async (values, setLoading, removeModal) => {
+  try {
+    setLoading(true);
+    const signer = provider.getSigner();
+    const donateToACharity = new Contract(contractAddress, contractABI, signer);
+    const donationEntries = await donateToACharity.sendEthToCharity(
+      values.donorName,
+      values.charity,
+      { value: utils.parseEther(values.amountEth) }
+    );
+
+    await donationEntries.wait();
+    setLoading(false);
+    alert("Donation Completed");
+  } catch (error) {
+    console.log(error);
+    setLoading(false);
+  }
+};
+
+export const getDonations = async (values) => {
+  try {
+    const signer = provider.getSigner();
+    const donateToACharity = new Contract(contractAddress, contractABI, signer);
+    const donations = await donateToACharity.getDonors();
+
+    return donations;
+  } catch (error) {
+    console.log(error);
+  }
+};

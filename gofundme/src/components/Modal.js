@@ -2,11 +2,11 @@ import React, { useEffect, useState, useMemo } from "react";
 import "../styles/Modal.scss";
 import {
   convertEthToUsdt,
+  donateEth,
   getBalance,
   yupValidation,
 } from "../utils/utilFunctions";
 import { Formik, Form, useField } from "formik";
-import { Contract, providers, utils } from "ethers";
 
 const MyInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -25,6 +25,7 @@ const Modal = ({ ...props }) => {
   const [eth, setEth] = useState(0);
   const [walletBalance, setWalletBalance] = useState(0);
   const [ethToUSDT, setEthToUSDT] = useState();
+  const [loading, setLoading] = useState(false);
 
   const setDonation = (val) => {
     setEth(val);
@@ -61,12 +62,13 @@ const Modal = ({ ...props }) => {
               charity: props.cause,
               balanceEth: walletBalance,
             }}
-            onSubmit={(values, { setSubmitting }) => {
+            onSubmit={(values, { setSubmitting, resetForm }) => {
               setTimeout(() => {
                 delete values.balanceEth;
-                console.log(values);
+                donateEth(values, setLoading);
                 setSubmitting();
-              }, 1500);
+                resetForm();
+              }, 500);
             }}
             validationSchema={yupValidation}
           >
@@ -105,7 +107,10 @@ const Modal = ({ ...props }) => {
                 disabled={props.account !== null ? false : true}
                 type="submit"
               >
-                Donate Ethereum
+                <div className="btn-loader">
+                  {loading && <div className="loader"></div>}
+                  {loading ? "Donating Ethereum" : "Donate Ethereum"}
+                </div>
               </button>
             </Form>
           </Formik>

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import "../styles/Header.scss";
 import { BsSearch } from "react-icons/bs";
 import { FcMenu } from "react-icons/fc";
-import { VscLoading } from "react-icons/vsc";
 import { FaTimes } from "react-icons/fa";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 

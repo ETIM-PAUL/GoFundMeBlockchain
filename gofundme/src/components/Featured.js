@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import "../styles/Featured.scss";
 import { MdArrowForwardIos } from "react-icons/md";
 import Modal from "./Modal";
+import { getDonations } from "../utils/utilFunctions";
+import { utils } from "ethers";
 
 const Featured = ({ ...props }) => {
   const [showModal, setShowModal] = useState(false);
   const [cause, setCause] = useState("");
+  const [donations, setDonations] = useState([]);
   const OtherFeaturedPosts = ({ ...props }) => {
     return (
       <div className="otherFeaturedPosts-outer">
@@ -15,21 +18,58 @@ const Featured = ({ ...props }) => {
           </div>
           <div className="details">
             <p>{props.detailsText}</p>
-            <button
-              className="btn"
-              onClick={() => toggleModalVisibility(props.detailsText)}
-            >
-              {props.btn} <MdArrowForwardIos />
-            </button>
+            <div style={{ display: "grid" }}>
+              <button
+                className="btn"
+                onClick={() => toggleModalVisibility(props.detailsText)}
+              >
+                {props.btn} <MdArrowForwardIos />
+              </button>
+              {donations.length > 0 && (
+                <span>
+                  Total Donations: {totalCauseDonations(props.detailsText)}
+                  ETH
+                </span>
+              )}
+            </div>
           </div>
         </div>
       </div>
     );
   };
+
+  useMemo(() => {
+    (async () => {
+      setDonations(await getDonations());
+    })();
+  }, []);
+  // console.log(donations);
+
   const toggleModalVisibility = (details) => {
     setShowModal(!showModal);
     setCause(details);
   };
+
+  //calculate total eth donated to an organization
+  const totalCauseDonations = (cause) => {
+    let sum = 0;
+    const charityDonatedEth = donations.map(
+      (donation) =>
+        donation.charity === cause &&
+        utils.formatEther(parseInt(donation.amount._hex, 16))
+    );
+    const arrOfNum = [];
+    charityDonatedEth.forEach((str) => {
+      arrOfNum.push(Number(str));
+    });
+    for (let i = 0; i < arrOfNum.length; i++) {
+      sum += arrOfNum[i];
+    }
+    return sum;
+  };
+
+  totalCauseDonations();
+
   return (
     <>
       <div className="featured-container">
@@ -48,14 +88,23 @@ const Featured = ({ ...props }) => {
                       Donate to verified fundraisers to help the individuals and
                       families affected by widespread flooding across the world
                     </p>
-                    <button
-                      className="btn"
-                      onClick={() =>
-                        toggleModalVisibility("Donating to flood victims")
-                      }
-                    >
-                      Help Now <MdArrowForwardIos />
-                    </button>
+                    <div className="btn-funds">
+                      <button
+                        className="btn"
+                        onClick={() =>
+                          toggleModalVisibility("Donating to flood victims")
+                        }
+                      >
+                        Help Now <MdArrowForwardIos />
+                      </button>
+                      {donations.length > 0 && (
+                        <span>
+                          Total Donations:{" "}
+                          {totalCauseDonations("Donating to flood victims")}
+                          ETH
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>

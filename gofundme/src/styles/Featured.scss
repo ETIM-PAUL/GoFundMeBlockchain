@@ -94,18 +94,23 @@ $primary_card_color: #f8f8f8;
                   display: none;
                 }
               }
-              .btn {
-                background-color: inherit;
-                border: none;
-                color: #333;
-                display: inline-flex;
-                font-size: 0.9rem;
-                font-weight: bolder;
-                line-height: 1.1;
-                padding: 0.75rem 1rem 0.75rem 0;
-                gap: 5px;
-                transition: all ease 0.3s;
-                margin-top: 4rem;
+              .btn-funds {
+                display: grid;
+                position: inherit;
+                .btn {
+                  background-color: inherit;
+                  border: none;
+                  color: #333;
+                  display: inline-flex;
+                  font-size: 0.9rem;
+                  font-weight: bolder;
+                  line-height: 1.1;
+                  padding: 0.75rem 1rem 0.75rem 0;
+                  gap: 5px;
+                  transition: all ease 0.3s;
+                  margin-top: 4rem;
+                  width: 160px;
+                }
               }
             }
             @include App.devices(mobile) {
@@ -118,7 +123,7 @@ $primary_card_color: #f8f8f8;
               width: 100%;
             }
             .first-details-outer {
-              .first-details-inner > .btn {
+              .first-details-inner > .btn-funds > .btn {
                 margin-top: 0rem;
               }
             }
@@ -126,7 +131,11 @@ $primary_card_color: #f8f8f8;
         }
         &:hover {
           cursor: pointer;
-          .first-flex > .first-details-outer > .first-details-inner > button {
+          .first-flex
+            > .first-details-outer
+            > .first-details-inner
+            > .btn-funds
+            > button {
             border-radius: 10px;
             background-color: $primary_btn_color;
             cursor: pointer;

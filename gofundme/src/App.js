@@ -12,6 +12,7 @@ import { Contract, providers } from "ethers";
 function App() {
   const [isWalletInstalled, setIsWalletInstalled] = useState(false);
   const [loading, setLoading] = useState(false);
+
   // state for keeping track of current connected account.
 
   const [account, setAccount] = useState(null);

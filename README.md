@@ -1,6 +1,8 @@
 # petsDonate
 A simple web3 goFundME app.
 
+hosted on vercel -> https://go-fund-me-web3-project.vercel.app/
+
 ## tools used
 react and scss for the front end, formik and yup for validation, react-icons for icons and solidity for writing the smart contract.
 The contract is deployed on a goerli network. You can get fake eth from alchemy to your wallet address to test the app.

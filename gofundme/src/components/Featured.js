@@ -17,7 +17,7 @@ const Featured = ({ ...props }) => {
             <p>{props.detailsText}</p>
             <button
               className="btn"
-              onClick={() => toggleModal(props.detailsText)}
+              onClick={() => toggleModalVisibility(props.detailsText)}
             >
               {props.btn} <MdArrowForwardIos />
             </button>
@@ -26,7 +26,7 @@ const Featured = ({ ...props }) => {
       </div>
     );
   };
-  const toggleModal = (details) => {
+  const toggleModalVisibility = (details) => {
     setShowModal(!showModal);
     setCause(details);
   };
@@ -50,7 +50,9 @@ const Featured = ({ ...props }) => {
                     </p>
                     <button
                       className="btn"
-                      onClick={() => toggleModal("Donating to flood victims")}
+                      onClick={() =>
+                        toggleModalVisibility("Donating to flood victims")
+                      }
                     >
                       Help Now <MdArrowForwardIos />
                     </button>
@@ -79,7 +81,7 @@ const Featured = ({ ...props }) => {
       </div>
       {showModal && (
         <Modal
-          toggleModal={toggleModal}
+          toggleModalVisibility={toggleModalVisibility}
           cause={cause}
           account={props.account}
         />

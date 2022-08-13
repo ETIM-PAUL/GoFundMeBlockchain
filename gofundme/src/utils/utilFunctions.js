@@ -1,18 +1,12 @@
-import React from "react";
 import axios from "axios";
-import { Contract, providers, utils } from "ethers";
+import { providers, utils } from "ethers";
+import * as Yup from "yup";
 
-export const getEthCurrentAmount = () => {
-  let ethPrice = 0;
-  new Promise(async (resolve, reject) => {
+const getEthCurrentPrice = async () => {
+  let ethPrice = new Promise(async (resolve, reject) => {
     try {
       ethPrice = await axios.get(
-        "https://api.coinmarketcap.com/v1/cryptocurrency/quotes/latest/symbol=ETH",
-        {
-          header: {
-            "X-CMC_PRO_API_KEY": "7512f095-4567-4506-bb40-e4d56695a293",
-          },
-        }
+        "https://api.coinstats.app/public/v1/coins/ethereum"
       );
     } catch (ex) {
       ethPrice = null;
@@ -22,21 +16,34 @@ export const getEthCurrentAmount = () => {
     }
     if (ethPrice) {
       // success
-      const json = ethPrice.data;
-      console.log(json);
+      const json = ethPrice.data.coin.price;
       resolve(json);
     }
   });
-  console.log(ethPrice);
-  return ethPrice;
+  return ethPrice.then(function (value) {
+    return value;
+  });
 };
 
-export const convertEthToUsdt = (eth) => {
-  let convertedUsdt = 0;
-  const ethPriceInUSD = 1900;
-  let newConvertedUsdt = ethPriceInUSD * eth;
-  convertedUsdt = newConvertedUsdt;
-  return convertedUsdt;
+export const convertEthToUsdt = async (eth) => {
+  let ethConvertedToUSD = new Promise(async (resolve, reject) => {
+    try {
+      ethConvertedToUSD = (await getEthCurrentPrice()) * eth;
+    } catch (ex) {
+      ethConvertedToUSD = null;
+      // error
+      console.log(ex);
+      reject(ex);
+    }
+    if (ethConvertedToUSD) {
+      // success
+      const json = ethConvertedToUSD;
+      resolve(json);
+    }
+  });
+  return ethConvertedToUSD.then(function (value) {
+    return value.toFixed(2);
+  });
 };
 
 export const getBalance = async (address) => {
@@ -46,7 +53,27 @@ export const getBalance = async (address) => {
     const balance = await provider.getBalance(address);
     const balanceInEth = utils.formatEther(balance);
     walletBalance = balanceInEth;
-    console.log(walletBalance);
-    return `${walletBalance} ETH`;
-  } else return "Wallet Not Connected";
+    return walletBalance;
+  } else return "Please Connect Your Wallet";
 };
+
+export const yupValidation = (balance) =>
+  Yup.object().shape({
+    donorName: Yup.string()
+      .notRequired()
+      .max(15, "Must not exceed 15 characters ")
+      .min(3, "Must not be less than 3 characters")
+      .matches(/^[aA-zZ\s]+$/, "Only alphabets are allowed for this field "),
+    amountEth: Yup.number()
+      .required("required")
+      .positive()
+      .when(
+        "balanceEth",
+        (balanceEth, Yup) =>
+          balanceEth &&
+          Yup.max(
+            balanceEth,
+            `Your Amount has to be less than or equal to ${balanceEth}`
+          )
+      ),
+  });

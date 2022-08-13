@@ -6,6 +6,7 @@ $border_radius: 10px;
   z-index: 3; /* Sit on top */
   left: 0;
   top: 0;
+  font-size: 13px;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
@@ -81,4 +82,11 @@ input {
   padding: 0.75rem;
   border: none;
   opacity: 0.2;
+}
+
+.error {
+  color: red;
+  font-size: 10px;
+  text-align: start;
+  width: 200px;
 }
